@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="Jogo">
+        <h1 class="gameText" id="jogadorText">Jogador :</h1>
+        <h1 class="gameText" id="cpuText">Máquina :</h1>
+        <h1 class="gameText" id="resultadoText">Resultado :</h1>
+
+        <button class="escolha" id="teste">Pedra</button>
+        <button class="escolha" id="teste2">Papel</button>
+        <button class="escolha" id="teste3">Tesoura</button>
+        <button onclick=" window.location.reload()" class="jogar">Jogar novamente</button>
+        <button onclick="window.location.assign('https://Google.com')" class="sair">Sair do jogo</button></script>
+    </div>
+    
+    <script>
+        const jogadorText = document.querySelector("#jogadorText");
+        const cpuText= document.querySelector("#cpuText");
+        const resultadoText = document.querySelector("#resultadoText");
+        const escolha = document.querySelectorAll(".escolha");
+        const jogar =  document.querySelector(".jogar");
+        const sair = document.querySelector(".sair");
+        let jogador;
+        let cpu;
+        let resultado;
+
+        escolha.forEach(button => button.addEventListener("click", () => {
+                jogador = button.textContent;
+                numAl();
+                jogadorText.textContent = `Jogador : ${jogador}`;
+                cpuText.textContent = `CPU : ${cpu}`;
+                resultadoText.textContent = vencedor();
+                document.getElementById("teste").disabled = true;
+                document.getElementById("teste2").disabled = true;
+                document.getElementById("teste3").disabled = true;
+               console.log("A partida acabou, você pode sair ou jogar novamente")
+        }
+        )); 
+
+        function numAl() {
+            const maquina = Math.floor(Math.random() * 3) + 1;
+
+            switch(maquina){
+                case 1 :
+                    cpu = "Pedra";
+                    break;
+                case 2 :
+                    cpu = "Papel";
+                    break;
+                case 3 :
+                    cpu = "Tesoura";
+                    break;
+            }
+        
+        }
+        // Parte dos resultados da partida
+        function vencedor(){
+            if(jogador == cpu){
+            return "Empate!";    
+            }
+            else if (cpu == "Pedra"){
+                return (jogador == "Papel") ? "Você Ganhou!" : "Você Perdeu!"
+            }
+            else if (cpu == "Papel"){
+                return (jogador == "Tesoura") ? "Você Ganhou!" : "Você Perdeu!"
+            }
+            else if (cpu == "Tesoura"){
+                return (jogador == "Pedra") ? "Você Ganhou!" : "Você Perdeu!"
+            }
+    }  
+
+    </script>
+    
+</body>
+</html>
